@@ -87,4 +87,8 @@ class SignInForm extends Component {
   }
 }
 
-export default SignInPage;
+export default withRouter(SignInPage);
+
+export {
+  SignInForm
+};
