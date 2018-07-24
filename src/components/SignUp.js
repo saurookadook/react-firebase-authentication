@@ -39,12 +39,16 @@ class SignUpForm extends Component {
       passwordOne
     } = this.state;
 
+    const {
+      history
+    } = this.props;
+
     auth.doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
-        this.state.setState(() => ({ ...INITIAL_STATE }));
+        this.setState(() => ({ ...INITIAL_STATE }));
         history.push(routes.HOME);
       })
-      .then(error => {
+      .catch(error => {
         this.setState(byPropKey('error', error));
       });
 
@@ -72,7 +76,7 @@ class SignUpForm extends Component {
           value={username}
           onChange={event => this.setState(byPropKey('username', event.target.value))}
           type="text"
-          placeholder="Full name"
+          placeholder="Username"
         />
         <input
           value={email}
@@ -104,7 +108,7 @@ class SignUpForm extends Component {
 
 const SignUpLink = () =>
   <p>
-    {`Dont' have an account?`}
+    {"Dont' have an account?"}
     <Link to={routes.SIGN_UP}>Sign Up</Link>
   </p>
 
