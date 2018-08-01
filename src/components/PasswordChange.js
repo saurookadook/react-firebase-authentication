@@ -61,14 +61,16 @@ class PasswordChangeForm extends Component {
         <button disabled={isInvalid} type="submit">
           Reset My Password
         </button>
+
+        { error && <p>{error.message}</p> }
       </form>
     )
   }
 }
 
-const PasswordChangePage = () =>
-  <div>
-    <h1>Password Change Page</h1>
-  </div>
+// const PasswordChangePage = () =>
+//   <div>
+//     <h1>Password Change Page</h1>
+//   </div>
 
-export default PasswordChangePage;
+export default PasswordChangeForm;
