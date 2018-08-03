@@ -1,5 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/database';
 
 // const prodConfig = { OPTIONAL SECOND STEP - create second project for production so that data from deployed app isn't confused with data in dev app
 //     apiKey: REACT_APP_API_KEY,
@@ -27,8 +28,10 @@ if (!firebase.apps.length) {
   firebase.initializeApp(config);
 }
 
+const db = firebase.database();
 const auth = firebase.auth();
 
 export {
+  db,
   auth
 };
