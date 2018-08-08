@@ -17,8 +17,6 @@ const withAuthentication = (Component) => {
     }
 
     render() {
-      const { authUser } = this.state;
-
       return (
         <Component />
       );
