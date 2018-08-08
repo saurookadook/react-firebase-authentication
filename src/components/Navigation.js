@@ -1,25 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import * as routes from '../constants/routes';
 import SignOutButton from './SignOut';
-import AuthUserContext from './AuthUserContext';
 
-// const Navigation = ({ authUser }) =>
-//   <div>
-//     { authUser
-//         ? <NavigationAuth />
-//         : <NavigationNonAuth />
-//     }
-//   </div>
-
-const Navigation = () =>
-  <AuthUserContext.Consumer>
-    {authUser => authUser
+const Navigation = ({ authUser }) =>
+  <div>
+    {authUser
       ? <NavigationAuth />
       : <NavigationNonAuth />
     }
-  </AuthUserContext.Consumer>
+  </div>
 
 const NavigationAuth = () =>
   <ul>
@@ -35,4 +27,8 @@ const NavigationNonAuth = () =>
     <li><Link to={routes.SIGN_IN}>Sign In</Link></li>
   </ul>
 
-export default Navigation;
+const mapStateToProps = (state) => ({
+  authUser: state.sessionState.authUser
+});
+
+export default connect(mapStateToProps)(Navigation);
