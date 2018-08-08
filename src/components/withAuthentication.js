@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import AuthUserContext from './AuthUserContext';
 import { firebase } from '../firebase';
 
 const withAuthentication = (Component) => {
